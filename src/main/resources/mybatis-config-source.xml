@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="callSettersOnNulls" value="true" />
+	</settings>
+	<!-- <typeHandlers>
+        <typeHandler javaType="String" jdbcType="BLOB" handler="com.reven.transfer.config.BlobTypeHandler" />
+    </typeHandlers> -->
+	<!-- <plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			设置数据库类型Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库
+			<property name="helperDialect" value="Oracle" />
+		</plugin>
+	</plugins> -->
+	<!-- 写法不对？ 
+	<databaseIdProvider type="DB_VENDOR">
+		<property name="MySQL" value="mysql" />
+		<property name="Oracle" value="oracle" />
+	</databaseIdProvider> -->
+</configuration>

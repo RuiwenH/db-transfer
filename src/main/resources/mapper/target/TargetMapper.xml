@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reven.transfer.dao.target.TargetMapper">
+	<!-- collection：指定要遍历的集合 item:取出当前集合中元素，赋给 item 中的值 separator：遍历出的多个元素之间用什么分隔符分隔开 open：遍历集合前用什么字符进行拼接 close：遍历集合后用什么字符进行拼接 
+		在 foreach 标签中还有一个属性 index， 遍历集合的时候 index 表示的是当前元素的索引，item 对应索引中的值 遍历 map 的时候 index 表示的是当前 map 中的 key，item 是 key 对应的 value -->
+
+	<delete id="truncate">
+		truncate table ${tableName}
+	</delete>
+	<insert id="insert" >
+		insert into ${tableName}
+		<foreach collection="columnMap.keys" item="key" open="(" close=")" separator=",">`${key}`</foreach>
+		values
+		<foreach collection="mapList" item="rowValue" separator=",">
+			<foreach collection="rowValue.values" item="value" open="(" close=")" separator=",">
+				<if test="value!=null ">#{value}</if>
+				<if test="value ==null ">null</if>
+			</foreach>
+		</foreach>
+	</insert>
+
+	
+</mapper>

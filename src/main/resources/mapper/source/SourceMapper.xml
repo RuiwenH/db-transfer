@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reven.transfer.dao.source.SourceMapper">
+	<select id="list" resultType="map">
+		SELECT *
+		FROM ${tableName}
+		<if test="orderBy!=null">
+			order by ${orderBy}
+		</if>
+	</select>
+
+	<select id="getPrimary" resultType="string" databaseId="oracle">
+		select col.column_name
+		from
+		user_constraints
+		con,user_cons_columns col
+		where
+		con.constraint_name=col.constraint_name and con.constraint_type='P'
+		and col.table_name=#{tableName}
+	</select>
+
+	<select id="getPrimary" resultType="string"  databaseId="mysql">
+		SELECT column_name 
+		FROM INFORMATION_SCHEMA.`KEY_COLUMN_USAGE` 
+		WHERE
+		table_name=#{tableName} 
+		AND	constraint_name='PRIMARY'
+	</select>
+</mapper>
