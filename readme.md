@@ -3,7 +3,7 @@
 * 解决SQLines Data Tool 无法将oracle的NClob字段迁移至mysql
 * 使用mybatis读取数据然后插入的方式，仅限小数据量
 * mybatis读取oracle的blob字段时转换为byte[]重新插入mysql
-* 目前支持：来源数据库oracle 》目标数据库mysql；来源数据库mysql 》目标数据库mysql
+* 目前支持：来源数据库oracle ==》目标数据库mysql；来源数据库mysql ==》目标数据库mysql
 
 # 使用方式1
 * 将工程中的 db-transfer-0.0.1.jar 、application.yml 、tables.txt 拷贝至一个空目录
@@ -29,6 +29,6 @@
 每批3000条， 36秒
 每批5000条， 36秒
 每批10000条，38秒
-每批20000条，37秒 ——不建议，不同的表估计会报错
+每批20000条，37秒 ——不建议，部分数据库单次接收的数据大小有限制
 ```
 # 
